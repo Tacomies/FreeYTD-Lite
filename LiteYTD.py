@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
 from pytube import YouTube
-from pathlib import Path
 import os
 window = Tk()
 
@@ -37,7 +36,7 @@ def get_video(link):
         messagebox.showerror(title="URL ERROR", message="Make sure that video URL is neither empty or invalid")
 
 def selection(option, link):
-    path = Path(__file__).with_name("downloads")
+    path = os.getcwd()
     video = get_video(link)
     if video:
         match(option):
