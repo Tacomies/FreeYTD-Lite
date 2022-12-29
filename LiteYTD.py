@@ -72,5 +72,5 @@ def main(): #Main function for style reasons
     mainloop()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": #Don't ask
     main()
