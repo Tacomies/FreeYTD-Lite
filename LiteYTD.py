@@ -5,8 +5,9 @@ from pytube import YouTube
 import os
 window = Tk()
 
-def download_video(vid, path):
-    while True:
+
+def download_video(vid, path): #function for downloading Mp4 format
+    while True: #Trying in loop because download is often failed for YouTube server reasons
         try:
             video = vid.streams.get_highest_resolution()
             video.download("downloads")
@@ -15,8 +16,8 @@ def download_video(vid, path):
         except:
             continue
 
-def download_audio(aud, path):
-    while True:
+def download_audio(aud, path): #function for downloading Mp3 format
+    while True: #Trying in loop because download is often failed for YouTube server reasons
         try:
             audio = aud.streams.filter(only_audio=True).first()
             audio = audio.download("downloads")
@@ -28,14 +29,14 @@ def download_audio(aud, path):
         except:
             continue
 
-def get_video(link):
+def get_video(link): #Function for making sure YouTube link exists/works
     try:
         video = YouTube(link)
         return video
     except:
         messagebox.showerror(title="URL ERROR", message="Make sure that video URL is neither empty or invalid")
 
-def selection(option, link):
+def selection(option, link): #Selecting output format
     path = os.getcwd()
     video = get_video(link)
     if video:
